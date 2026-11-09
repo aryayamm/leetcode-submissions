@@ -13,7 +13,6 @@ class Solution:
                 return 0 
             left = 1 + dfs(root.left)
             right = 1 + dfs(root.right)
-            print(left,right)
             if abs(left-right) > 1:
                 ans = False
                 return 0
