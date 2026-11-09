@@ -18,8 +18,10 @@ class Solution:
                     continue
                 num += cur.val
                 total += 1
-                q.append(cur.left)
-                q.append(cur.right)
+                if cur.left != None:
+                    q.append(cur.left)
+                if cur.right != None:
+                    q.append(cur.right)
             if total != 0: arr.append(num/total)
         return arr
 
