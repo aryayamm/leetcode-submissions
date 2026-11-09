@@ -6,24 +6,18 @@
 #         self.right = right
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        arr = []
+        table = set()
+        ans = False
         def dfs(root):
-            nonlocal arr
-            if root is None:
-                return 
+            nonlocal table,k,ans
+            if root == None:
+                return
+            if k - root.val in table:
+                ans = True
+                return
+            table.add(root.val)
             dfs(root.left)
-            arr.append(root.val)
             dfs(root.right)
             return
         dfs(root)
-        l = 0
-        r = len(arr)-1
-        while l < r:
-            cur = arr[l] + arr[r]
-            if cur == k:
-                return True
-            if cur < k:
-                l +=1
-            else:
-                r -= 1
-        return False
+        return ans
